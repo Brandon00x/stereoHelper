@@ -29,12 +29,15 @@ const server = http.createServer((req, res) => {
 
     //use relative vol
     if (volPercent != 0 && volPercent != undefined){
+      nodeLIRC.send("Logitech_Z906", "AUX");
       for (i = 0; i < counterRelative; i++){
         nodeLIRC.send("Logitech_Z906", "VOLUME_DOWN");
       }
+      nodeLIRC.send("Logitech_Z906", "INPUT_3");
     }
     //use vol absolute
     else if (volAbsolute != 0 && volPercent != undefined){
+      nodeLIRC.send("Logitech_Z906", "AUX");
       for (i = 0; i < 12; i++){
         nodeLIRC.send("Logitech_Z906", "VOLUME_DOWN");
       }
@@ -42,6 +45,7 @@ const server = http.createServer((req, res) => {
       for (i = 0; i < counterAbsolute; i++){
         nodeLIRC.send("Logitech_Z906", "VOLUME_UP");
       }
+      nodeLIRC.send("Logitech_Z906", "INPUT_3");
     }
   }
 
